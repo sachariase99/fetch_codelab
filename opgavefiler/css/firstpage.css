@@ -1,0 +1,20 @@
+/* opgave 1
+du må erne style din message :)
+*/
+
+/*opgave 3*/
+
+#theStory img {
+  width: 100%;
+}
+
+#theStory button {
+  margin-right: 0.3rem;
+  color: aliceblue;
+  background-color: orangered;
+  border: 2px solid rgb(247, 115, 8);
+}
+
+#theStory h2 {
+  font-size: 4rem;
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Fetch codelab</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/assignmentPage.css">
+    <script src="../js/assignmentpage.js" defer></script>
+
+    <link rel="stylesheet" href="../../opgavefiler/css/firstpage.css">
+    <script src="../../opgavefiler/js/firstPage.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <section class="assignmentTopSection">
+            <h1>async funktionen</h1>
+            <nav>
+                <a href="../../index.html">back</a>
+            </nav>
+            <br>
+
+
+    </header>
+
+    </section>
+    <section class="assignmentArea">
+        <header class="easy"></header>
+        <article>
+
+            <h1>Async Timer Opgave</h1>
+            <p>Lav en JavaScript-applikation, der tæller ned fra 5 til 0 med pauser mellem hvert tal. Brug async/await
+                til at styre
+                tidsforsinkelsen.</p>
+            <p><strong>Opgave:</strong></p><br><br>
+            <ol>
+                <li>Opret en HTML-fil med følgende struktur:</li>
+                <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Async Timer Opgave&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Countdown:&lt;/h1&gt;
+    &lt;p id="countdown"&gt;5&lt;/p&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+
+                <li>Opret en JavaScript-fil ved navn <code>script.js</code>. <br></li>
+
+                <li>I <code>script.js</code>, skal du skrive koden til din async funktion, der tæller ned og opdaterer
+                    værdien i
+                    HTML-dokumentet. Her er et eksempel:</li>
+                <pre>
+async function startCountdown() {
+    const countdownElement = document.getElementById("countdown");
+    let count = 5;
+
+    while (count >= 0) {
+        countdownElement.textContent = count;
+        await sleep(1000); // Vent i 1 sekund (1000 millisekunder)
+        count--;
+    }
+
+    countdownElement.textContent = "Færdig!";
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+startCountdown();
+            </pre>
+            </ol>
+
+            <p>Åbn din HTML-fil, og du bør se tællingen ned fra 5 til 0 med pauser.</p>
+        </article>
+    </section>
+    <footer>
+        <nav>
+            <a href="../../index.html">back</a>
+        </nav>
+    </footer>
+
+</body>
+
+</html>

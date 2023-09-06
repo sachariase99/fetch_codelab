@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Anek+Devanagari&family=Poppins:wght@500&display=swap");
+
+body {
+  margin-left: 2em;
+  width: 100%;
+  min-width: 400px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+header {
+  width: 70%;
+  margin-bottom: 1em;
+}
+
+.assignmentTopSection {
+  margin-bottom: 3em;
+}
+
+.assignmentArea {
+  margin-top: 1rem;
+  width: 60%;
+  min-width: 600px;
+  border: 2px solid black;
+  border-radius: 0pc 0px 30px 0px;
+  overflow: hidden;
+}
+
+.assignmentArea header {
+  width: 100%;
+  margin-bottom: 1em;
+}
+.assignmentArea article {
+  padding: 1rem;
+}
+
+.assignmentArea ol,
+ul {
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+}
+
+button {
+  padding: 5px 20px;
+  color: white;
+  background-color: grey;
+  border-radius: 0.5rem;
+}
+
+.easy {
+  height: 0.5em;
+  /* border-bottom: 2px solid black; */
+}
+
+.medium {
+  height: 0.5em;
+  /*  border-bottom: 2px solid black; */
+}
+
+.hard {
+  height: 0.5em;
+  /*  border-bottom: 2px solid black; */
+}
+
+.extreme {
+  height: 0.5em;
+
+  /*  border-bottom: 2px solid black; */
+}
+
+footer {
+  width: 70%;
+}
+
+.hintbutton {
+  color: aliceblue;
+  background-color: orange;
+  border: none;
+}
+.hint {
+  display: none;
+}
+
+pre {
+  background-color: rgb(112, 112, 113);
+  color: aliceblue;
+  overflow-x: auto;
+  tab-size: 1;
+  border-radius: 0.5rem;
+}

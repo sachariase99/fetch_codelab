@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Fetch codelab</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/assignmentPage.css">
+    <script src="../js/assignmentpage.js" defer></script>
+
+    <link rel="stylesheet" href="../../opgavefiler/css/firstpage.css">
+    <script src="../../opgavefiler/js/firstPage.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <section class="assignmentTopSection">
+            <h1>Fetch funktionen</h1>
+            <nav>
+                <a href="../../index.html">back</a>
+            </nav>
+            <br>
+            <p>Her er opgaver med fetch API'et så du kan hente data og andre resourcer til javascript.</p>
+            <br>
+
+            <strong>
+                <p>JavaScript skal skrives i filen: /opgavefiler/js/firstPage.js </p>
+                <p>evt. CSS skal skrives i filen: /opgavefiler/css/firstpage.css </p>
+            </strong>
+
+
+    </header>
+
+    </section>
+
+
+
+    <section class="assignmentArea">
+        <header class="easy"></header>
+        <article>
+            <h2>Opgave 1</h2>
+            <h3>Opgave beskrivelse</h3>
+            <p>
+                hent den danske version af historien om kode katten felix, og vis den i Dom elementet med id "theStory"
+                Du skal indsætte et af billederne i opgavefiler/img.
+            </p>
+            <br>
+            <h3>Historien</h3>
+            <article id="theStory">
+
+            </article>
+
+            <br>
+            <button class="hintbutton">Hint</button>
+
+            <div class="hint">
+
+                <h3>Eksempelkode:</h3>
+                <p>
+                    Her er et eksempel på, koden:
+                </p>
+                <pre>
+    <code>
+        const myDataFileUrl = '../../opgavefiler/data/story.json';
+        
+        const myStoryElement = document.getElementById('theStory');
+        let myStorydata = null;
+        
+        
+        
+        
+        fetch(myDataFileUrl)
+        .then((response) => {
+        
+        return response.json();
+        
+        })
+        .then((data) => {
+        myStorydata = data;
+        setUpStory('DK');
+        })
+        .catch((error) => {
+        console.error(error);
+        });
+        
+        
+        
+        function setUpStory(myLanguage) {
+        let myStory = null;
+        
+        switch (myLanguage) {
+        case 'DK':
+        myStory = myStorydata.DK;
+        break;
+        
+        case 'FI':
+        myStory = myStorydata.FI;
+        break;
+        
+        case 'SE':
+        myStory = myStorydata.SE;
+        break;
+        
+        case 'UK':
+        myStory = myStorydata.UK;
+        break;
+        
+        default:
+        myStory = myStorydata.DK;
+        break;
+        }
+        createStory(myStory);
+        }
+        
+        function createStory(myStory) {
+        myStoryElement.innerHTML = ''
+        createButtons();
+        
+        let myHeadline = document.createElement('h2');
+        myHeadline.innerText = myStory.headline;
+        let myImage = document.createElement('img');
+        myImage.src = '../../opgavefiler/img/felix.jpg';
+        let myParagraf = document.createElement('p');
+        myParagraf.innerText = myStory.text;
+        
+        
+        myStoryElement.appendChild(myHeadline);
+        myStoryElement.appendChild(myImage);
+        myStoryElement.appendChild(myParagraf);
+        
+        }
+        
+        function createButtons() {
+        let myDkbutton = document.createElement('button');
+        myDkbutton.innerText = 'Dansk';
+        myDkbutton.addEventListener('click', (e) => {
+        setUpStory("DK");
+        });
+        
+        let mySebutton = document.createElement('button');
+        mySebutton.innerText = 'Svenska';
+        mySebutton.addEventListener('click', (e) => {
+        setUpStory("SE");
+        });
+        
+        let myFibutton = document.createElement('button');
+        myFibutton.innerText = 'Finsk';
+        myFibutton.addEventListener('click', (e) => {
+        setUpStory("FI");
+        });
+        
+        let myUkbutton = document.createElement('button');
+        myUkbutton.innerText = 'English';
+        myUkbutton.addEventListener('click', (e) => {
+        setUpStory("UK");
+        });
+        
+        myStoryElement.appendChild(myDkbutton);
+        myStoryElement.appendChild(mySebutton);
+        myStoryElement.appendChild(myFibutton);
+        myStoryElement.appendChild(myUkbutton);
+        }
+    </code>
+</pre>
+            </div>
+        </article>
+    </section>
+
+    <section class="assignmentArea">
+        <header class="medium"></header>
+        <article>
+            <h2>Opgave 2</h2>
+            <h3>Opgave beskrivelse</h3>
+            <p>
+                lave en sprog versionerings option af opgave 1, udfra de elementer du kan finde i json objektet, med
+                enten en
+                dropdown meny eller knapper i interface.
+            </p>
+            <br>
+            <h3>Historien</h3>
+            <article id="theStory">
+
+            </article>
+
+            <br>
+            <button class="hintbutton">Hint</button>
+
+            <div class="hint">
+
+                <h3>Eksempelkode:</h3>
+                <p>
+                    Her er et eksempel på, koden:
+                </p>
+                <pre>
+    <code>
+        const myDataFileUrl = '../../opgavefiler/data/story.json';
+        
+        const myStoryElement = document.getElementById('theStory');
+        let myStorydata = null;
+        
+        
+        
+        
+        fetch(myDataFileUrl)
+        .then((response) => {
+        
+        return response.json();
+        
+        })
+        .then((data) => {
+        myStorydata = data;
+        setUpStory('DK');
+        })
+        .catch((error) => {
+        console.error(error);
+        });
+        
+        
+        
+        function setUpStory(myLanguage) {
+        let myStory = null;
+        
+        switch (myLanguage) {
+        case 'DK':
+        myStory = myStorydata.DK;
+        break;
+        
+        case 'FI':
+        myStory = myStorydata.FI;
+        break;
+        
+        case 'SE':
+        myStory = myStorydata.SE;
+        break;
+        
+        case 'UK':
+        myStory = myStorydata.UK;
+        break;
+        
+        default:
+        myStory = myStorydata.DK;
+        break;
+        }
+        createStory(myStory);
+        }
+        
+        function createStory(myStory) {
+        myStoryElement.innerHTML = ''
+        createButtons();
+        
+        let myHeadline = document.createElement('h2');
+        myHeadline.innerText = myStory.headline;
+        let myImage = document.createElement('img');
+        myImage.src = '../../opgavefiler/img/felix.jpg';
+        let myParagraf = document.createElement('p');
+        myParagraf.innerText = myStory.text;
+        
+        
+        myStoryElement.appendChild(myHeadline);
+        myStoryElement.appendChild(myImage);
+        myStoryElement.appendChild(myParagraf);
+        
+        }
+        
+        function createButtons() {
+        let myDkbutton = document.createElement('button');
+        myDkbutton.innerText = 'Dansk';
+        myDkbutton.addEventListener('click', (e) => {
+        setUpStory("DK");
+        });
+        
+        let mySebutton = document.createElement('button');
+        mySebutton.innerText = 'Svenska';
+        mySebutton.addEventListener('click', (e) => {
+        setUpStory("SE");
+        });
+        
+        let myFibutton = document.createElement('button');
+        myFibutton.innerText = 'Finsk';
+        myFibutton.addEventListener('click', (e) => {
+        setUpStory("FI");
+        });
+        
+        let myUkbutton = document.createElement('button');
+        myUkbutton.innerText = 'English';
+        myUkbutton.addEventListener('click', (e) => {
+        setUpStory("UK");
+        });
+        
+        myStoryElement.appendChild(myDkbutton);
+        myStoryElement.appendChild(mySebutton);
+        myStoryElement.appendChild(myFibutton);
+        myStoryElement.appendChild(myUkbutton);
+        }
+    </code>
+</pre>
+            </div>
+        </article>
+    </section>
+    <section class="assignmentArea">
+        <header class="hard"></header>
+        <article>
+            <h2>Opgave 3</h2>
+            <p>Du skal hente data fra denne URI "https://jsonplaceholder.typicode.com/users"<br>
+                og vise navn og adresse for
+                alle brugere, i elementet med id="userList" i dette format</p>
+            <br><br>
+            <pre><code>
+                &lt;h2&gt;${myUser.name}&lt;/h2&gt;
+                &lt;p&gt;Adresse: ${myUser.address.street}  ${myUser.address.suite}&lt;/br&gt;
+                   post nummer: ${myUser.address.zipcode}&lt;/br&gt;
+                   by: ${myUser.address.city}&lt;/p&gt;
+        
+            </code></pre>
+
+            <article id="userList"></article>
+
+            <button class="hintbutton">Hint</button>
+            <div class="hint">
+
+                <pre><code>
+                function buildUsers(myUserData){
+                    myUserData.map((myUser)=>{
+                    let myUserHTML=`&lt;h2&gt;${myUser.name}&lt;/h2&gt;
+                    &lt;p&gt;Adresse: ${myUser.address.street}  ${myUser.address.suite}&lt;/br&gt;
+                    post nummer: ${myUser.address.zipcode}&lt;/br&gt;
+                    by: ${myUser.address.city}&lt;/p&gt;`;
+                    myUserlistElement.innerHTML+=myUserHTML;
+                    });
+                }
+
+</code></pre>
+            </div>
+
+
+        </article>
+
+
+
+    </section>
+
+    <section class="assignmentArea">
+        <header class="extreme"></header>
+        <article>
+            <h2>Opgave 4</h2>
+
+            <h2>Small Dog</h2>
+            <p>Du skal i denne opgave, finde ud af hvordan man bruger dette api: https://dog.ceo/dog-api/
+                Du skal vise et billede af en tilfældig hund når siden reloader </p>
+            <div id="theDog"></div>
+
+
+            <br>
+
+        </article>
+    </section>
+
+
+    <footer>
+        <nav>
+            <a href="../../index.html">back</a>
+        </nav>
+    </footer>
+
+</body>
+
+</html>
