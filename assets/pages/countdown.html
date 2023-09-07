@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        #countdown {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            font-size: 5rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+
+    <div id="countdown"></div>
+
+    <script>
+        function startCountdown() {
+            let count = 5;
+            const countdownElement = document.getElementById('countdown');
+
+            async function displayCount() {
+                countdownElement.textContent = count;
+                count--;
+
+                if (count >= 0) {
+                    setTimeout(displayCount, 1000);
+                } else {
+                    countdownElement.textContent = "I AM DONE !";
+                    setTimeout(restartCountdown, 3000); // Restart countdown after 7 seconds
+                }
+            }
+
+            displayCount();
+        }
+
+        function restartCountdown() {
+            startCountdown(); // Start the countdown again
+        }
+
+        startCountdown()
+
+        restartCountdown()
+    </script>
+</body>
+
+</html>
